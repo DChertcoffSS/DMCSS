@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DMC Service Solutions — Consulting Services Widget</title>
+  <meta name="description" content="Animated consulting services widget for DMC Service Solutions, built to embed in Wix via iframe." />
+  <style>
+    /* Base */
+    :root{
+      --bg:#ffffff;
+      --text:#1a1a1a;
+      --muted:#4f4f4f;
+      --brand-blue:#0f4c81; /* deep blue accent */
+      --brand-gold:#cda434; /* gold accent */
+      --card:#f7f9fc;
+      --shadow:0 8px 24px rgba(0,0,0,.12);
+    }
+    html,body{height:100%;}
+    body{
+      margin:0; padding:0;
+      font-family: Arial, Helvetica, sans-serif; /* Site style preference */
+      color:var(--text);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Container */
+    .widget{
+      box-sizing:border-box;
+      max-width:840px;
+      margin:0 auto;
+      padding:20px 16px 28px;
+    }
+
+    /* Header */
+    .widget__header{
+      display:flex; flex-direction:column; gap:8px; align-items:flex-start; justify-content:flex-start;
+      border-radius:12px;
+      background:linear-gradient(135deg, rgba(15,76,129,.08), rgba(205,164,52,.08));
+      padding:16px 16px 12px;
+      border:1px solid rgba(15,76,129,.18);
+    }
+    .widget__title{ font-size:1.625rem; font-weight:700; letter-spacing:.2px; margin:0; color:var(--brand-blue); }
+    .widget__tagline{ font-family: "Lucida Calligraphy", "Brush Script MT", cursive; font-size:1.05rem; color:var(--brand-gold); margin:0; }
+    .widget__brand{ font-weight:600; color:var(--muted); font-size:.95rem; }
+
+    /* Carousel */
+    .carousel{
+      position:relative; margin-top:16px;
+      border-radius:16px; background:var(--card); border:1px solid rgba(15,76,129,.12);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .slides{ position:relative; }
+    .slide{ display:none; padding:22px 22px 64px; }
+    .slide.is-active{ display:block; }
+
+    .slide__title{ margin:0 0 6px; font-size:1.15rem; font-weight:700; color:var(--text); }
+    .slide__desc{ margin:0; color:var(--muted); line-height:1.55; }
+
+    /* Controls */
+    .controls{
+      position:absolute; inset:auto 0 8px 0; display:flex; justify-content:center; gap:12px; align-items:center; padding:8px 0;
+    }
+    .btn{
+      appearance:none; border:1px solid rgba(15,76,129,.25); background:#fff; color:var(--brand-blue);
+      border-radius:999px; padding:8px 14px; font-weight:700; font-size:.9rem; cursor:pointer; transition:all .2s ease;
+    }
+    .btn:hover{ background:var(--brand-blue); color:#fff; }
+
+    /* Progress dots */
+    .dots{ position:absolute; bottom:12px; right:16px; display:flex; gap:6px; }
+    .dot{ width:8px; height:8px; border-radius:50%; background:rgba(15,76,129,.25); }
+    .dot.is-active{ background:var(--brand-blue); }
+
+    /* Fade animation (reduced motion respected) */
+    .fade-enter{ animation:fadeIn .5s ease both; }
+    @keyframes fadeIn{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:translateY(0);} }
+    @media (prefers-reduced-motion: reduce){
+      .fade-enter{ animation:none; }
+    }
+
+    /* Responsive */
+    @media (max-width:520px){
+      .widget{ padding:14px 10px 20px; }
+      .slide{ padding:18px 16px 62px; }
+      .widget__title{ font-size:1.35rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="widget" aria-label="DMC Service Solutions Consulting Services">
+    <header class="widget__header">
+      <h2 class="widget__title">Consulting Services</h2>
+      <p class="widget__brand">DMC Service Solutions, LLC</p>
+      <p class="widget__tagline" aria-label="tagline">Where Experience Breeds Excellence Second To None</p>
+    </header>
+
+    <section class="carousel" aria-roledescription="carousel" aria-label="Consulting services carousel">
+      <div class="slides" id="slides" role="group" aria-live="polite">
+        <!-- Slides are injected by JS -->
+      </div>
+      <div class="controls" aria-label="carousel controls">
+        <button class="btn" id="prev" type="button" aria-label="Previous">◄ Prev</button>
+        <button class="btn" id="pause" type="button" aria-label="Pause">⏸ Pause</button>
+        <button class="btn" id="next" type="button" aria-label="Next">Next ►</button>
+      </div>
+      <div class="dots" id="dots" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <script>
+    // Data (from your content)
+    const services = [
+      { title: 'Federal Contractor Registration & SAM Support', desc: 'End-to-end SAM.gov registration assistance and compliance guidance to ensure timely eligibility.' },
+      { title: 'SBA Business Size Analysis', desc: 'Assess receipts and employee-based thresholds to validate small business status across NAICS codes.' },
+      { title: 'Primary NAICS Code Analysis', desc: 'Identify and align the most advantageous primary NAICS with your core capabilities and opportunities.' },
+      { title: 'Solicitation Review & Technical Proposal Design', desc: 'Deconstruct requirements and craft compliant, compelling proposal narratives and technical volumes.' },
+      { title: 'Market Research & Competitive Analysis', desc: 'Map demand signals, vehicles, and competitor positions to prioritize bids and teaming strategies.' },
+      { title: 'Incumbent Contractor Research', desc: 'Surface incumbent performance, pricing, and differentiators to sharpen win themes.' },
+      { title: 'Contract Administration & Negotiation Support', desc: 'Strengthen compliance, modifications, invoicing, and negotiation outcomes post-award.' },
+      { title: 'Acquisition & Logistics Planning', desc: 'Plan procurement timelines, supply chain, and risk mitigations for reliable delivery.' },
+      { title: 'FOIA Requests & Federal Information Support', desc: 'Obtain public records to inform capture decisions and validate competitive intelligence.' },
+      { title: 'Business Development, Marketing & Contract Growth Strategy', desc: 'Build pipelines, positioning, and account plans to expand awards and revenue.' }
+    ];
+
+    // Build slides & dots
+    const slidesEl = document.getElementById('slides');
+    const dotsEl = document.getElementById('dots');
+    services.forEach((s, i) => {
+      const slide = document.createElement('article');
+      slide.className = 'slide';
+      slide.setAttribute('aria-roledescription', 'slide');
+      slide.setAttribute('aria-label', `${i+1} of ${services.length}`);
+      slide.innerHTML = `<h3 class="slide__title">${s.title}</h3><p class="slide__desc">${s.desc}</p>`;
+      slidesEl.appendChild(slide);
+
+      const dot = document.createElement('span');
+      dot.className = 'dot';
+      dotsEl.appendChild(dot);
+    });
+
+    // State & helpers
+    let index = 0;
+    let timer = null;
+    let paused = false;
+    const allSlides = Array.from(document.querySelectorAll('.slide'));
+    const allDots = Array.from(document.querySelectorAll('.dot'));
+
+    function show(i){
+      allSlides.forEach(s => s.classList.remove('is-active'));
+      allDots.forEach(d => d.classList.remove('is-active'));
+      const slide = allSlides[i];
+      const dot = allDots[i];
+      slide.classList.add('is-active','fade-enter');
+      dot.classList.add('is-active');
+      index = i;
+    }
+    function next(){ show((index+1) % allSlides.length); }
+    function prev(){ show((index-1+allSlides.length) % allSlides.length); }
+
+    function startAuto(){
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(reduceMotion) return; // respect user preference
+      stopAuto();
+      timer = setInterval(() => { if(!paused) next(); }, 4500);
+    }
+    function stopAuto(){ if(timer){ clearInterval(timer); timer = null; } }
+
+    // Init
+    show(0);
+    startAuto();
+
+    // Controls
+    document.getElementById('next').addEventListener('click', () => { next(); });
+    document.getElementById('prev').addEventListener('click', () => { prev(); });
+    const pauseBtn = document.getElementById('pause');
+    pauseBtn.addEventListener('click', () => {
+      paused = !paused;
+      pauseBtn.textContent = paused ? '▶︎ Play' : '⏸ Pause';
+      pauseBtn.setAttribute('aria-label', paused ? 'Play' : 'Pause');
+    });
+
+    // Optional: notify parent about content height (handy if you wire Wix/Velo messaging)
+    function postHeight(){
+      const h = document.documentElement.scrollHeight;
+      try{ parent.postMessage({ type:'dmc-widget-height', height:h }, '*'); }catch(e){ /* noop */ }
+    }
+    const ro = new ResizeObserver(postHeight);
+    ro.observe(document.body);
+    window.addEventListener('load', postHeight);
+  </script>
+</body>
+</html>
+``
