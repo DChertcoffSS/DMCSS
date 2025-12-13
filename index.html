@@ -1,186 +1,88 @@
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DMC Service Solutions — Consulting Services</title>
-  <meta name="description" content="DMC Service Solutions, LLC — Animated Consulting Services grid with Prev/Next/Pause (v14 exact-match styling)" />
-  <!-- build: v14 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>U.S. Government Solicitations: Structure and Process — DMC Service Solutions</title>
+  <meta name="description" content="Overview of U.S. Government solicitation sections (A–M), process steps, and FAR compliance tips." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="U.S. Government Solicitations: Structure and Process" />
+  <meta property="og:description" content="Overview of solicitation sections (A–M), process steps, and FAR compliance tips." />
+  <meta property="og:image" content="./assets/us-gov-solicitations.png" />
   <style>
-    :root{
-      --brand-blue:#1E2A78;   /* DMC Blue */
-      --brand-gold:#A68A3A;   /* Deep Gold */
-      --text:#1f2733;         /* slightly deeper than #222 for better contrast */
-      --muted:#5d6b82;        /* control/status text */
-      --bg:#f7f9fc;           /* page background */
-      --card:#ffffff;         /* card surface */
-      --border:#e4e8f0;       /* card border */
-      --shadow:0 10px 25px rgba(0,0,0,.18);
-      --shadow-soft:0 6px 20px rgba(30,42,120,.12);
-      --glow-gold:0 0 0 8px rgba(166,138,58,.25);
-    }
-
-    /* Base */
-    html,body{height:100%;}
-    body{
-      margin:0; font-family: Arial, Helvetica, sans-serif; font-size:15px; line-height:1.6;
-      color:var(--text); background:var(--bg);
-    }
-    *,*::before,*::after{ box-sizing:border-box; }
-
-    .container{ max-width:1040px; margin:0 auto; padding:24px; }
-
-    /* Header frame (matches screenshot: blue border + gold outer glow) */
-    .frame{
-      background:var(--card); border-radius:16px; border:2px solid var(--brand-blue);
-      box-shadow: var(--glow-gold), var(--shadow); padding:24px;
-    }
-    .title{ margin:0 0 12px 0; font-size:1.85rem; color:var(--brand-blue); letter-spacing:.2px; }
-
-    /* Controls top-right */
-    .controls{ display:flex; gap:8px; justify-content:flex-end; margin:8px 0 16px 0; }
-    .btn{ appearance:none; border:0; background:var(--brand-blue); color:#fff; font-weight:600; font-size:.9rem;
-          padding:8px 12px; border-radius:12px; box-shadow:0 2px 8px rgba(30,42,120,.25); cursor:pointer; }
-    .btn:hover{ filter:brightness(1.07); }
-    .btn:focus{ outline:2px solid #fff; outline-offset:2px; }
-
-    /* Grid layout */
-    .grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; }
-
-    .card{
-      background:var(--card); border:1px solid var(--border); border-radius:14px; box-shadow: var(--shadow-soft);
-      padding:16px 16px 18px 16px; position:relative; transition:border-color .2s ease, box-shadow .2s ease, transform .15s ease;
-    }
-    .card:hover{ transform:translateY(-2px); box-shadow:0 10px 26px rgba(0,0,0,.14); }
-    .card h4{ margin:0 0 6px 0; font-size:1.06rem; font-weight:700; color:var(--brand-blue); }
-    .card p{ margin:0; font-size:.95rem; color:#2c3442; }
-
-    /* Small gold dot in top-right of each card */
-    .dot{ position:absolute; top:10px; right:12px; width:8px; height:8px; background:var(--brand-gold); border-radius:50%;
-          box-shadow:0 0 0 3px rgba(166,138,58,.18); }
-
-    /* Active highlight */
-    .card.active{ border-color:var(--brand-gold); box-shadow:0 12px 32px rgba(166,138,58,.25), inset 0 0 0 2px var(--brand-gold); }
-    @keyframes pulse { 0%{ box-shadow:0 12px 32px rgba(166,138,58,.25), inset 0 0 0 2px var(--brand-gold);} 50%{ box-shadow:0 18px 44px rgba(166,138,58,.35), inset 0 0 0 2px var(--brand-gold);} 100%{ box-shadow:0 12px 32px rgba(166,138,58,.25), inset 0 0 0 2px var(--brand-gold);} }
-    .card.active{ animation:pulse 1600ms ease-in-out infinite; }
-
-    /* Signature & tagline */
-    .signature{ margin-top:18px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; color:var(--brand-blue); font-weight:700; }
-    .tagline{ font-family:"Lucida Calligraphy","Lucida Handwriting","Brush Script MT",cursive; color:var(--brand-gold); font-weight:600; }
-
-    /* Responsive breakpoints */
-    @media (max-width:900px){ .grid{ grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width:600px){ .grid{ grid-template-columns: 1fr; } .controls{ justify-content:flex-start; } }
-    @media (prefers-reduced-motion: reduce){ .card.active{ animation:none; } }
+    :root{--blue:#004A9E;--gold:#C9A227;--text:#222;--muted:#666;--maxw:960px}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);line-height:1.6;background:#fff}
+    header{border-top:8px solid var(--blue);border-bottom:4px solid var(--gold);padding:1.25rem 1rem}
+    .container{max-width:var(--maxw);margin:0 auto;padding:1rem}
+    h1{font-size:1.4rem;margin:.25rem 0 0}
+    .tagline{font-family:'Lucida Calligraphy','Lucida Handwriting',cursive;color:var(--gold);font-size:1.1rem}
+    .meta{color:var(--muted);font-size:.9rem}
+    article{margin-top:1rem}
+    figure{margin:1rem 0}
+    figcaption{font-size:.9rem;color:var(--muted)}
+    img{max-width:100%;height:auto}
+    .foot{border-top:1px solid #eee;margin-top:2rem;padding-top:1rem;color:var(--muted);font-size:.9rem}
+    .frame-tip{background:#f7f7f7;border:1px solid #eee;padding:.75rem;border-left:4px solid var(--blue);margin:1rem 0}
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="frame" aria-label="Consulting Services widget">
-      <h2 class="title">Consulting Services</h2>
-
-      <!-- Controls (top-right) -->
-      <div class="controls" aria-label="Controls">
-        <button class="btn" id="prev" aria-label="Previous">◄ Prev</button>
-        <button class="btn" id="next" aria-label="Next">Next ►</button>
-        <button class="btn" id="pause" aria-label="Pause autoplay">⏸ Pause</button>
-      </div>
-
-      <!-- Grid of cards (matches attached services) -->
-      <div class="grid" id="grid" role="list">
-        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
-          <h4>Federal Contractor Registration &amp; SAM Support</h4>
-          <p>End-to-end SAM.gov registration assistance and compliance guidance to ensure timely eligibility.</p>
-        </article>
-
-        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
-          <h4>SBA Business Size Analysis</h4>
-          <p>Assess receipts and employee-based thresholds to validate small business status across NAICS codes.</p>
-        </article>
-
-        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
-          <h4>Primary NAICS Code Analysis</h4>
-          <p>Identify and align the most advantageous primary NAICS with your core capabilities and opportunities.</p>
-        </article>
-
-        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
-          <h4>Solicitation Review &amp; Technical Proposal Design</h4>
-          <p>Deconstruct requirements and craft compliant, compelling proposal narratives and technical volumes.</p>
-        </article>
-
-        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
-          <h4>Market Research &amp; Competitive Analysis</h4>
-          <p>Map demand signals, vehicles, and competitor positions to prioritize bids and teaming strategies.</p>
-        </article>
-
-        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
-          <h4>Incumbent Contractor Research</h4>
-          <p>Surface incumbent performance, pricing, and differentiators to sharpen win themes.</p>
-        </article>
-
-        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
-          <h4>Contract Administration &amp; Negotiation Support</h4>
-          <p>Strengthen compliance, modifications, invoicing, and negotiation outcomes post-award.</p>
-        </article>
-
-        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
-          <h4>Acquisition &amp; Logistics Planning</h4>
-          <p>Plan procurement timelines, supply chain, and risk mitigations for reliable delivery.</p>
-        </article>
-
-        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
-          <h4>FOIA Requests &amp; Federal Information Support</h4>
-          <p>Obtain public records to inform capture decisions and validate competitive intelligence.</p>
-        </article>
-
-        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
-          <h4>Business Development, Marketing &amp; Contract Growth Strategy</h4>
-          <p>Build pipelines, positioning, and account plans to expand awards and revenue.</p>
-        </article>
-      </div>
-
-      <!-- Signature & tagline -->
-      <div class="signature" aria-label="Company signature">
-        <span>DMC Service Solutions, LLC</span>
-        <span class="tagline">Where Experience Breeds Excellence Second To None</span>
-      </div>
+  <header>
+    <div class="container">
+      <div class="tagline">Consulting Excellence, Tailored to You</div>
+      <h1>U.S. Government Solicitations: Structure and Process</h1>
+      <div class="meta">Prepared by David Chertcoff · DMC Service Solutions</div>
     </div>
-  </div>
+  </header>
 
-  <script>
-    // Exact-match in-place highlighter moves across cards with robust timing.
-    (function(){
-      const cards = Array.from(document.querySelectorAll('.card'));
-      const prev  = document.getElementById('prev');
-      const next  = document.getElementById('next');
-      const pause = document.getElementById('pause');
-      let i = 0; let paused = false; let t = null; const interval = 3000;
+  <main class="container">
+    <article>
+      <p>This post summarizes how U.S. Government solicitations are structured (Sections A–M), outlines key steps in the acquisition process, and highlights practical FAR compliance tips. Use it as a quick reference when preparing proposals or advising capture teams.</p>
 
-      function setActive(idx){ cards.forEach(el => el.classList.remove('active')); cards[idx].classList.add('active'); }
-      function nextCard(){ i = (i + 1) % cards.length; setActive(i); }
-      function prevCard(){ i = (i - 1 + cards.length) % cards.length; setActive(i); }
+      <figure>
+        <img src="./assets/us-gov-solicitations.png" alt="Infographic: U.S. Government Solicitations — structure (Sections A–M), process steps, and FAR compliance tips" />
+        <figcaption>Overview infographic for quick reference. © DMC Service Solutions.</figcaption>
+      </figure>
 
-      function start(){ stop(); t = setInterval(()=>{ if(!paused){ nextCard(); } }, interval); }
-      function stop(){ if(t){ clearInterval(t); t=null; } }
+      <h2>Solicitation Structure (Sections A–M)</h2>
+      <ul>
+        <li>A — Information to Offerors</li>
+        <li>B — Supplies or Services and Price/Cost</li>
+        <li>C — Statement of Work</li>
+        <li>D — Packaging and Marking</li>
+        <li>E — Inspection or Acceptance</li>
+        <li>F — Deliveries or Performance</li>
+        <li>G — Contract Administration Data</li>
+        <li>H — Special Contract Requirement</li>
+        <li>I — Contract Clauses</li>
+        <li>J — Attachments and Exhibits</li>
+        <li>K — Representations and Certifications</li>
+        <li>L — Instructions to Offerors</li>
+      </ul>
 
-      prev.addEventListener('click', ()=>{ paused = true; prevCard(); });
-      next.addEventListener('click', ()=>{ paused = true; nextCard(); });
-      pause.addEventListener('click', ()=>{ paused = !paused; pause.textContent = paused ? '▶ Resume' : '⏸ Pause'; if (!paused) { nextCard(); } });
+      <h2>Key Steps in the Process</h2>
+      <ol>
+        <li><strong>Need Identification</strong> — Agencies define requirements and objectives.</li>
+        <li><strong>Pre‑Solicitation Planning</strong> — Market research and acquisition strategy.</li>
+        <li><strong>Solicitation Issuance</strong> — RFPs or Invitations released.</li>
+        <li><strong>Proposal Submission</strong> — Vendors respond with detailed offers.</li>
+        <li><strong>Evaluation &amp; Award</strong> — Price, technical capability, and past performance assessed.</li>
+        <li><strong>Contract Administration</strong> — Performance management and compliance.</li>
+        <li><strong>Closeout</strong> — Obligations completed; contract formally closed.</li>
+      </ol>
 
-      // Accessibility helpers
-      document.addEventListener('keydown', (e)=>{
-        if(e.key === 'ArrowLeft'){ paused = true; prevCard(); }
-        if(e.key === 'ArrowRight'){ paused = true; nextCard(); }
-        if(e.key === ' '){ e.preventDefault(); pause.click(); }
-      });
+      <h2>FAR Compliance Tips</h2>
+      <ul>
+        <li>Read Sections L &amp; M carefully; tailor to instructions and evaluation criteria.</li>
+        <li>Ensure cost realism and internal consistency across volumes.</li>
+      </ul>
 
-      setActive(i); start();
+      <div class="frame-tip">
+        <strong>Embedding on Wix:</strong> This page is designed to be embedded via Wix’s <em>Embed a Site</em> or HTML iFrame element. Ensure you use the HTTPS Netlify URL and size the embed to 100% width/height.
+      </div>
+    </article>
 
-      const frame = document.querySelector('.frame');
-      ['mouseenter','focusin','touchstart'].forEach(evt=> frame.addEventListener(evt, ()=>{ paused = true; }));
-      ['mouseleave','focusout','touchend' ].forEach(evt=> frame.addEventListener(evt, ()=>{ paused = false; }));
-    })();
-  </script>
+    <div class="foot">© 2025 DMC Service Solutions · www.dmcservicesolutions.com</div>
+  </main>
 </body>
 </html>
