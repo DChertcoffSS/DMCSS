@@ -11,12 +11,29 @@
       /* Screen-friendly brand tones (true to logo, slightly brighter for clarity) */
       --brand-blue: #1E2A78;       /* tuned DMC Blue */
       --brand-gold-deep: #A68A3A;  /* tuned DMC Deep Gold */
+
+      /* Supporting palette */
       --text:#222;
       --muted:#666;
       --bg:#f7f9fc;
+
+      /* Optional dark card palette (if you ever want dark sections) */
+      --dark-bg:#0f1216;
+      --dark-card:#151a20;
+      --dark-border:#243040;
+      --dark-text:#e9eef5;
+      --dark-muted:#b9c3d1;
+      --shadow: 0 10px 25px rgba(0,0,0,.20);
     }
+
     html,body{height:100%;}
-    body{ margin:0; font-family: Arial, Helvetica, sans-serif; color:var(--text); background:var(--bg); }
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+    }
+
     .container{ max-width:960px; margin:0 auto; padding:24px; }
 
     /* Blue/Gold frame accents */
@@ -57,6 +74,14 @@
 
     footer{ text-align:center; color:var(--muted); font-size:0.9rem; margin-top:16px; }
 
+    /* Optional dark card section style (unused by default) */
+    .card-dark{
+      background:var(--dark-card); color:var(--dark-text);
+      border:1px solid var(--dark-border); border-radius:16px;
+      box-shadow:var(--shadow); padding:24px;
+    }
+
+    /* responsive */
     @media (max-width:600px){
       .container{ padding:16px; }
       .slide{ padding:16px; }
@@ -146,6 +171,7 @@
   </div>
 
   <script>
+    // Accessible, dependency-free carousel
     (function(){
       const slides = Array.from(document.querySelectorAll('.slide'));
       const prev = document.getElementById('prev');
@@ -212,8 +238,8 @@
         carousel.addEventListener(evt, ()=>{ paused = true; });
       });
       ['mouseleave','focusout','touchend'].forEach(evt=>{
-        carousel.addEventListener(evt, ()=>{ paused = false; });
-           });
+        carousel.addEventListener(evt,        carousel.addEventListener(evt, ()=>{ paused = false; });
+      });
     })();
   </script>
 </body>
