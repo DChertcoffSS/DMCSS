@@ -1,0 +1,217 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DMC Service Solutions — Consulting Services</title>
+  <meta name="description" content="DMC Service Solutions, LLC — Federal contracting consulting services widget" />
+  <!-- build: v4 (cache-buster comment to encourage CDN refresh) -->
+  <style>
+    :root{
+      /* Screen-friendly brand tones (true to logo, slightly brighter for clarity) */
+      --brand-blue: #1E2A78;       /* tuned DMC Blue */
+      --brand-gold-deep: #A68A3A;  /* tuned DMC Deep Gold */
+
+      /* Supporting palette */
+      --text:#222;
+      --muted:#666;
+      --bg:#f7f9fc;
+
+      /* Optional dark card palette (unused, kept for future sections) */
+      --dark-bg:#0f1216;
+      --dark-card:#151a20;
+      --dark-border:#243040;
+      --dark-text:#e9eef5;
+      --dark-muted:#b9c3d1;
+      --shadow: 0 10px 25px rgba(0,0,0,.20);
+    }
+
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+    }
+
+    .container{ max-width:960px; margin:0 auto; padding:24px; }
+
+    /* Blue/Gold frame accents */
+    header{
+      border:2px solid var(--brand-blue);
+      box-shadow: 0 0 0 6px var(--brand-gold-deep);
+      padding:24px; background:white; border-radius:8px;
+    }
+    h1{ font-size:1.6rem; margin:0 0 8px; color:var(--brand-blue); }
+    .tagline{
+      font-family: "Lucida Calligraphy", "Lucida Handwriting", "Brush Script MT", cursive;
+      font-size:1.15rem; color:var(--brand-gold-deep); letter-spacing:0.25px; font-weight:600;
+    }
+
+    .widget{ margin-top:16px; background:white; border-radius:8px; overflow:hidden; border:1px solid #ddd; }
+    .widget header{ box-shadow:none; border:none; padding:16px 24px; }
+    .widget h2{ font-size:1.4rem; margin:0; color:var(--brand-blue); }
+
+    /* carousel */
+    .carousel{ position:relative; }
+    .slides{ display:grid; grid-template-columns: 100%; }
+    .slide{ display:none; padding:24px; }
+    .slide.active{ display:block; animation: fadeIn 400ms ease-in; }
+    @keyframes fadeIn{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+    .slide h3{ font-size:1.15rem; margin:0 0 6px; color:var(--brand-blue); }
+    .slide p{ font-size:0.95rem; line-height:1.55; color:#222; margin:0; }
+
+    .controls{ display:flex; gap:8px; align-items:center; padding:12px 24px; border-top:1px solid #eee; background:#fafafa; }
+    .controls button{
+      appearance:none; border:1px solid #ccc; background:white; color:#111; padding:8px 12px; border-radius:6px; cursor:pointer; font-size:0.95rem;
+    }
+    .controls button:hover{
+      background: linear-gradient(#fff, #f2f2f2);
+      border-color: #bbb;
+    }
+    .status{ margin-left:auto; font-size:0.85rem; color:var(--muted); }
+
+    footer{ text-align:center; color:var(--muted); font-size:0.9rem; margin-top:16px; }
+
+    /* Optional dark card section style (unused by default) */
+    .card-dark{
+      background:var(--dark-card); color:var(--dark-text);
+      border:1px solid var(--dark-border); border-radius:16px;
+      box-shadow:var(--shadow); padding:24px;
+    }
+
+    /* responsive */
+    @media (max-width:600px){
+      .container{ padding:16px; }
+      .slide{ padding:16px; }
+      .controls{ padding:8px 16px; }
+      h1{ font-size:1.35rem; }
+      .tagline{ font-size:1.05rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>DMC Service Solutions, LLC</h1>
+      <div class="tagline" aria-label="Company tagline">Where Experience Breeds Excellence Second To None</div>
+    </header>
+
+    <section class="widget" aria-labelledby="consulting-services">
+      <header>
+        <h2 id="consulting-services">Consulting Services</h2>
+      </header>
+
+      <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Consulting service highlights">
+        <div class="slides">
+          <article class="slide active" aria-label="Federal Contractor Registration & SAM Support">
+            <h3>Federal Contractor Registration &amp; SAM Support</h3>
+            <p>End-to-end SAM.gov registration assistance and compliance guidance to ensure timely eligibility.</p>
+          </article>
+
+          <article class="slide" aria-label="SBA Business Size Analysis">
+            <h3>SBA Business Size Analysis</h3>
+            <p>Assess receipts and employee-based thresholds to validate small business status across NAICS codes.</p>
+          </article>
+
+          <article class="slide" aria-label="Primary NAICS Code Analysis">
+            <h3>Primary NAICS Code Analysis</h3>
+            <p>Identify and align the most advantageous primary NAICS with your core capabilities and opportunities.</p>
+          </article>
+
+          <article class="slide" aria-label="Solicitation Review & Technical Proposal Design">
+            <h3>Solicitation Review &amp; Technical Proposal Design</h3>
+            <p>Deconstruct requirements and craft compliant, compelling proposal narratives and technical volumes.</p>
+          </article>
+
+          <article class="slide" aria-label="Market Research & Competitive Analysis">
+            <h3>Market Research &amp; Competitive Analysis</h3>
+            <p>Map demand signals, vehicles, and competitor positions to prioritize bids and teaming strategies.</p>
+          </article>
+
+          <article class="slide" aria-label="Incumbent Contractor Research">
+            <h3>Incumbent Contractor Research</h3>
+            <p>Surface incumbent performance, pricing, and differentiators to sharpen win themes.</p>
+          </article>
+
+          <article class="slide" aria-label="Contract Administration & Negotiation Support">
+            <h3>Contract Administration &amp; Negotiation Support</h3>
+            <p>Strengthen compliance, modifications, invoicing, and negotiation outcomes post-award.</p>
+          </article>
+
+          <article class="slide" aria-label="Acquisition & Logistics Planning">
+            <h3>Acquisition &amp; Logistics Planning</h3>
+            <p>Plan procurement timelines, supply chain, and risk mitigations for reliable delivery.</p>
+          </article>
+
+          <article class="slide" aria-label="FOIA Requests & Federal Information Support">
+            <h3>FOIA Requests &amp; Federal Information Support</h3>
+            <p>Obtain public records to inform capture decisions and validate competitive intelligence.</p>
+          </article>
+
+          <article class="slide" aria-label="Business Development, Marketing & Contract Growth Strategy">
+            <h3>Business Development, Marketing &amp; Contract Growth Strategy</h3>
+            <p>Build pipelines, positioning, and account plans to expand awards and revenue.</p>
+          </article>
+        </div>
+
+        <div class="controls" aria-controls="consulting-services">
+          <button type="button" id="prev" aria-label="Previous">◄ Prev</button>
+          <button type="button" id="next" aria-label="Next">Next ►</button>
+          <button type="button" id="pause" aria-label="Pause autoplay">⏸ Pause</button>
+          <span class="status" id="status" aria-live="polite">Slide 1 of 10</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <small>© <span id="year"></span> DMC Service Solutions, LLC</small>
+    </footer>
+  </div>
+
+  <script>
+    // Accessible, dependency-free carousel
+    (function(){
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const prev = document.getElementById('prev');
+      const next = document.getElementById('next');
+      const pause = document.getElementById('pause');
+      const status = document.getElementById('status');
+      const yearEl = document.getElementById('year');
+      yearEl.textContent = new Date().getFullYear();
+
+      let index = 0;
+      let paused = false;
+      let timer = null;
+      const total = slides.length;
+
+      function show(i){
+        slides.forEach(s => s.classList.remove('active'));
+        slides[i].classList.add('active');
+        status.textContent = `Slide ${i+1} of ${total}`;
+      }
+
+      function start(){
+        stop();
+        timer = setInterval(()=>{
+          if(!paused){ next.click(); }
+        }, 4500);
+      }
+      function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+
+      prev.addEventListener('click', ()=>{
+        index = (index - 1 + total) % total;
+        show(index);
+      });
+      next.addEventListener('click', ()=>{
+        index = (index + 1) % total;
+        show(index);
+      });
+      pause.addEventListener('click', ()=>{
+        paused = !paused;
+        pause.textContent = paused ? '▶ Resume' : '⏸ Pause';
+        pause.setAttribute('aria-label', paused ? 'Resume autoplay' : 'Pause autoplay');
+      });
+
