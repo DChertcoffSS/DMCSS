@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,16 +120,3 @@
 
   // Controls
   nextBtn.onclick = next;
-   prevBtn.onclick = prev;
-  pauseBtn.onclick = () => {
-    paused = !paused;
-    pauseBtn.textContent = paused ? '▶ Resume' : '⏸ Pause';
-    paused ? stop() : start();
-  };
-
-  // Init
-  updateUI();
-  start();
-})();
-</script>
-</body>
