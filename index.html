@@ -1,481 +1,186 @@
+
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>DMC Service Solutions — Consulting Services</title>
-<meta name="description" content="DMC Service Solutions, LLC — Federal contracting consulting services widget" />
-<style>
-:root{
---brand-blue:#0a3d62; /* deep blue */
---brand-gold:#c9a227; /* gold */
---text:#222;
---muted:#666;
---bg:#f7f9fc;
-}
-html,body{height:100%;}
-body{
-margin:0; font-family: Arial, Helvetica, sans-serif; color:var(--text); background:var(--bg);
-}
-.container{
-max-width:960px; margin:0 auto; padding:24px;
-}
-header{
-border:2px solid var(--brand-blue);
-box-shadow: 0 0 0 6px var(--brand-gold);
-padding:24px; background:white; border-radius:8px;
-}
-h1{ font-size:1.6rem; margin:0 0 8px; color:var(--brand-blue); }
-.tagline{
-font-family: "Lucida Calligraphy", "Lucida Handwriting", "Brush Script MT", cursive;
-font-size:1.1rem; color:var(--brand-gold); letter-spacing:0.25px;
-}
-.widget{
-margin-top:16px; background:white; border-radius:8px; overflow:hidden; border:1px solid #ddd;
-}
-.widget header{ box-shadow:none; border:none; padding:16px 24px; }
-.widget h2{ font-size:1.4rem; margin:0; color:var(--brand-blue); }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DMC Service Solutions — Consulting Services</title>
+  <meta name="description" content="DMC Service Solutions, LLC — Animated Consulting Services grid with Prev/Next/Pause (v14 exact-match styling)" />
+  <!-- build: v14 -->
+  <style>
+    :root{
+      --brand-blue:#1E2A78;   /* DMC Blue */
+      --brand-gold:#A68A3A;   /* Deep Gold */
+      --text:#1f2733;         /* slightly deeper than #222 for better contrast */
+      --muted:#5d6b82;        /* control/status text */
+      --bg:#f7f9fc;           /* page background */
+      --card:#ffffff;         /* card surface */
+      --border:#e4e8f0;       /* card border */
+      --shadow:0 10px 25px rgba(0,0,0,.18);
+      --shadow-soft:0 6px 20px rgba(30,42,120,.12);
+      --glow-gold:0 0 0 8px rgba(166,138,58,.25);
+    }
 
-/* carousel */
-.carousel{ position:relative; }
-.slides{ display:grid; grid-template-columns: 100%; }
-.slide{ display:none; padding:24px; }
-.slide.active{ display:block; animation: fadeIn 400ms ease-in; }
-@keyframes fadeIn{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+    /* Base */
+    html,body{height:100%;}
+    body{
+      margin:0; font-family: Arial, Helvetica, sans-serif; font-size:15px; line-height:1.6;
+      color:var(--text); background:var(--bg);
+    }
+    *,*::before,*::after{ box-sizing:border-box; }
 
-.slide h3{ font-size:1.15rem; margin:0 0 6px; color:var(--brand-blue); }
-.slide p{ font-size:0.95rem; line-height:1.5; color:#333; margin:0; }
+    .container{ max-width:1040px; margin:0 auto; padding:24px; }
 
-.controls{ display:flex; gap:8px; align-items:center; padding:12px 24px; border-top:1px solid #eee; background:#fafafa; }
-.controls button{
-appearance:none; border:1px solid #ccc; background:white; color:#111; padding:8px 12px; border-radius:6px; cursor:pointer; font-size:0.95rem;
-}
-.controls button:hover{ background:#f0f0f0; }
-.status{ margin-left:auto; font-size:0.85rem; color:var(--muted); }
+    /* Header frame (matches screenshot: blue border + gold outer glow) */
+    .frame{
+      background:var(--card); border-radius:16px; border:2px solid var(--brand-blue);
+      box-shadow: var(--glow-gold), var(--shadow); padding:24px;
+    }
+    .title{ margin:0 0 12px 0; font-size:1.85rem; color:var(--brand-blue); letter-spacing:.2px; }
 
-footer{
-text-align:center; color:var(--muted); font-size:0.9rem; margin-top:16px;
-}
+    /* Controls top-right */
+    .controls{ display:flex; gap:8px; justify-content:flex-end; margin:8px 0 16px 0; }
+    .btn{ appearance:none; border:0; background:var(--brand-blue); color:#fff; font-weight:600; font-size:.9rem;
+          padding:8px 12px; border-radius:12px; box-shadow:0 2px 8px rgba(30,42,120,.25); cursor:pointer; }
+    .btn:hover{ filter:brightness(1.07); }
+    .btn:focus{ outline:2px solid #fff; outline-offset:2px; }
 
-/* responsive */
-@media (max-width:600px){
-.container{ padding:16px; }
-.slide{ padding:16px; }
-.controls{ padding:8px 16px; }
-}
-</style>
+    /* Grid layout */
+    .grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; }
+
+    .card{
+      background:var(--card); border:1px solid var(--border); border-radius:14px; box-shadow: var(--shadow-soft);
+      padding:16px 16px 18px 16px; position:relative; transition:border-color .2s ease, box-shadow .2s ease, transform .15s ease;
+    }
+    .card:hover{ transform:translateY(-2px); box-shadow:0 10px 26px rgba(0,0,0,.14); }
+    .card h4{ margin:0 0 6px 0; font-size:1.06rem; font-weight:700; color:var(--brand-blue); }
+    .card p{ margin:0; font-size:.95rem; color:#2c3442; }
+
+    /* Small gold dot in top-right of each card */
+    .dot{ position:absolute; top:10px; right:12px; width:8px; height:8px; background:var(--brand-gold); border-radius:50%;
+          box-shadow:0 0 0 3px rgba(166,138,58,.18); }
+
+    /* Active highlight */
+    .card.active{ border-color:var(--brand-gold); box-shadow:0 12px 32px rgba(166,138,58,.25), inset 0 0 0 2px var(--brand-gold); }
+    @keyframes pulse { 0%{ box-shadow:0 12px 32px rgba(166,138,58,.25), inset 0 0 0 2px var(--brand-gold);} 50%{ box-shadow:0 18px 44px rgba(166,138,58,.35), inset 0 0 0 2px var(--brand-gold);} 100%{ box-shadow:0 12px 32px rgba(166,138,58,.25), inset 0 0 0 2px var(--brand-gold);} }
+    .card.active{ animation:pulse 1600ms ease-in-out infinite; }
+
+    /* Signature & tagline */
+    .signature{ margin-top:18px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; color:var(--brand-blue); font-weight:700; }
+    .tagline{ font-family:"Lucida Calligraphy","Lucida Handwriting","Brush Script MT",cursive; color:var(--brand-gold); font-weight:600; }
+
+    /* Responsive breakpoints */
+    @media (max-width:900px){ .grid{ grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width:600px){ .grid{ grid-template-columns: 1fr; } .controls{ justify-content:flex-start; } }
+    @media (prefers-reduced-motion: reduce){ .card.active{ animation:none; } }
+  </style>
 </head>
 <body>
-<div class="container">
-<header>
-<h1>DMC Service Solutions, LLC</h1>
-<div class="tagline" aria-label="Company tagline">Where Experience Breeds Excellence Second To None</div>
-</header>
+  <div class="container">
+    <div class="frame" aria-label="Consulting Services widget">
+      <h2 class="title">Consulting Services</h2>
 
-<section class="widget" aria-labelledby="consulting-services">
-<header>
-<h2 id="consulting-services">Consulting Services</h2>
-</header>
+      <!-- Controls (top-right) -->
+      <div class="controls" aria-label="Controls">
+        <button class="btn" id="prev" aria-label="Previous">◄ Prev</button>
+        <button class="btn" id="next" aria-label="Next">Next ►</button>
+        <button class="btn" id="pause" aria-label="Pause autoplay">⏸ Pause</button>
+      </div>
 
-<div class="carousel" role="region" aria-roledescription="carousel" aria-label="Consulting service highlights">
-<div class="slides">
-<article class="slide active" aria-label="Federal Contractor Registration & SAM Support">
-<h3>Federal Contractor Registration &amp; SAM Support</h3>
-<p>End-to-end SAM.gov registration assistance and compliance guidance to ensure timely eligibility.</p>
-</article>
+      <!-- Grid of cards (matches attached services) -->
+      <div class="grid" id="grid" role="list">
+        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
+          <h4>Federal Contractor Registration &amp; SAM Support</h4>
+          <p>End-to-end SAM.gov registration assistance and compliance guidance to ensure timely eligibility.</p>
+        </article>
 
-<article class="slide" aria-label="SBA Business Size Analysis">
-<h3>SBA Business Size Analysis</h3>
-<p>Assess receipts and employee-based thresholds to validate small business status across NAICS codes.</p>
-</article>
+        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
+          <h4>SBA Business Size Analysis</h4>
+          <p>Assess receipts and employee-based thresholds to validate small business status across NAICS codes.</p>
+        </article>
 
-<article class="slide" aria-label="Primary NAICS Code Analysis">
-<h3>Primary NAICS Code Analysis</h3>
-<p>Identify and align the most advantageous primary NAICS with your core capabilities and opportunities.</p>
-</article>
+        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
+          <h4>Primary NAICS Code Analysis</h4>
+          <p>Identify and align the most advantageous primary NAICS with your core capabilities and opportunities.</p>
+        </article>
 
-<article class="slide" aria-label="Solicitation Review & Technical Proposal Design">
-<h3>Solicitation Review &amp; Technical Proposal Design</h3>
-<p>Deconstruct requirements and craft compliant, compelling proposal narratives and technical volumes.</p>
-</article>
+        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
+          <h4>Solicitation Review &amp; Technical Proposal Design</h4>
+          <p>Deconstruct requirements and craft compliant, compelling proposal narratives and technical volumes.</p>
+        </article>
 
-<article class="slide" aria-label="Market Research & Competitive Analysis">
-<h3>Market Research &amp; Competitive Analysis</h3>
-<p>Map demand signals, vehicles, and competitor positions to prioritize bids and teaming strategies.</p>
-</article>
+        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
+          <h4>Market Research &amp; Competitive Analysis</h4>
+          <p>Map demand signals, vehicles, and competitor positions to prioritize bids and teaming strategies.</p>
+        </article>
 
-<article class="slide" aria-label="Incumbent Contractor Research">
-<h3>Incumbent Contractor Research</h3>
-<p>Surface incumbent performance, pricing, and differentiators to sharpen win themes.</p>
-</article>
+        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
+          <h4>Incumbent Contractor Research</h4>
+          <p>Surface incumbent performance, pricing, and differentiators to sharpen win themes.</p>
+        </article>
 
-<article class="slide" aria-label="Contract Administration & Negotiation Support">
-<h3>Contract Administration &amp; Negotiation Support</h3>
-<p>Strengthen compliance, modifications, invoicing, and negotiation outcomes post-award.</p>
-</article>
+        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
+          <h4>Contract Administration &amp; Negotiation Support</h4>
+          <p>Strengthen compliance, modifications, invoicing, and negotiation outcomes post-award.</p>
+        </article>
 
-<article class="slide" aria-label="Acquisition & Logistics Planning">
-<h3>Acquisition &amp; Logistics Planning</h3>
-<p>Plan procurement timelines, supply chain, and risk mitigations for reliable delivery.</p>
-</article>
+        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
+          <h4>Acquisition &amp; Logistics Planning</h4>
+          <p>Plan procurement timelines, supply chain, and risk mitigations for reliable delivery.</p>
+        </article>
 
-<article class="slide" aria-label="FOIA Requests & Federal Information Support">
-<h3>FOIA Requests &amp; Federal Information Support</h3>
-<p>Obtain public records to inform capture decisions and validate competitive intelligence.</p>
-</article>
+        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
+          <h4>FOIA Requests &amp; Federal Information Support</h4>
+          <p>Obtain public records to inform capture decisions and validate competitive intelligence.</p>
+        </article>
 
-<article class="slide" aria-label="Business Development, Marketing & Contract Growth Strategy">
-<h3>Business Development, Marketing &amp; Contract Growth Strategy</h3>
-<p>Build pipelines, positioning, and account plans to expand awards and revenue.</p>
-</article>
-</div>
+        <article class="card" role="listitem"><span class="dot" aria-hidden="true"></span>
+          <h4>Business Development, Marketing &amp; Contract Growth Strategy</h4>
+          <p>Build pipelines, positioning, and account plans to expand awards and revenue.</p>
+        </article>
+      </div>
 
-<div class="controls" aria-controls="consulting-services">
-<button type="button" id="prev" aria-label="Previous">◄ Prev</button>
-<button type="button" id="next" aria-label="Next">Next ►</button>
-<button type="button" id="pause" aria-label="Pause autoplay">⏸ Pause</button>
-<span class="status" id="status" aria-live="polite">Slide 1 of 10</span>
-</div>
-</div>
-</section>
+      <!-- Signature & tagline -->
+      <div class="signature" aria-label="Company signature">
+        <span>DMC Service Solutions, LLC</span>
+        <span class="tagline">Where Experience Breeds Excellence Second To None</span>
+      </div>
+    </div>
+  </div>
 
-<footer>
-<small>© <span id="year"></span> DMC Service Solutions, LLC</small>
-</footer>
-</div>
+  <script>
+    // Exact-match in-place highlighter moves across cards with robust timing.
+    (function(){
+      const cards = Array.from(document.querySelectorAll('.card'));
+      const prev  = document.getElementById('prev');
+      const next  = document.getElementById('next');
+      const pause = document.getElementById('pause');
+      let i = 0; let paused = false; let t = null; const interval = 3000;
 
-<script>
-// Simple accessible carousel without external deps
-(function(){
-const slides = Array.from(document.querySelectorAll('.slide'));
-const prev = document.getElementById('prev');
-const next = document.getElementById('next');
-const pause = document.getElementById('pause');
-const status = document.getElementById('status');
-const yearEl = document.getElementById('year');
-yearEl.textContent = new Date().getFullYear();
+      function setActive(idx){ cards.forEach(el => el.classList.remove('active')); cards[idx].classList.add('active'); }
+      function nextCard(){ i = (i + 1) % cards.length; setActive(i); }
+      function prevCard(){ i = (i - 1 + cards.length) % cards.length; setActive(i); }
 
-let index = 0;
-let paused = false;
-let timer = null;
-const total = slides.length;
+      function start(){ stop(); t = setInterval(()=>{ if(!paused){ nextCard(); } }, interval); }
+      function stop(){ if(t){ clearInterval(t); t=null; } }
 
-function show(i){
-slides.forEach(s => s.classList.remove('active'));
-slides[i].classList.add('active');
-status.textContent = `Slide ${i+1} of ${total}`;
-}
+      prev.addEventListener('click', ()=>{ paused = true; prevCard(); });
+      next.addEventListener('click', ()=>{ paused = true; nextCard(); });
+      pause.addEventListener('click', ()=>{ paused = !paused; pause.textContent = paused ? '▶ Resume' : '⏸ Pause'; if (!paused) { nextCard(); } });
 
-function start(){
-stop();
-timer = setInterval(()=>{
-if(!paused){ next.click(); }
-}, 4500); // auto-advance every 4.5s
-}
-function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+      // Accessibility helpers
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowLeft'){ paused = true; prevCard(); }
+        if(e.key === 'ArrowRight'){ paused = true; nextCard(); }
+        if(e.key === ' '){ e.preventDefault(); pause.click(); }
+      });
 
-prev.addEventListener('click', ()=>{
-index = (index - 1 + total) % total;
-show(index);
-});
-next.addEventListener('click', ()=>{
-index = (index + 1) % total;
-show(index);
-});
-pause.addEventListener('click', ()=>{
-paused = !paused;
-pause.textContent = paused ? '▶ Resume' : '⏸ Pause';
-pause.setAttribute('aria-label', paused ? 'Resume autoplay' : 'Pause autoplay');
-});
+      setActive(i); start();
 
-// keyboard support
-document.addEventListener('keydown', (e)=>{
-if(e.key === 'ArrowLeft'){ prev.click(); }
-if(e.key === 'ArrowRight'){ next.click(); }
-if(e.key.toLowerCase() === ' ') { e.preventDefault(); pause.click(); }
-});
-
-// touch swipe (basic)
-let sx = 0; let dx = 0;
-document.querySelector('.carousel').addEventListener('touchstart', (e)=>{ sx = e.touches[0].clientX; });
-document.querySelector('.carousel').addEventListener('touchmove', (e)=>{ dx = e.touches[0].clientX - sx; });
-document.querySelector('.carousel').addEventListener('touchend', ()=>{
-if(Math.abs(dx) > 40){ (dx > 0 ? prev : next).click(); }
-sx = 0; dx = 0;
-});
-
-show(index);
-start();
-// Pause autoplay while user is interacting to improve accessibility
-['mouseenter','focusin','touchstart'].forEach(evt=>{
-document.querySelector('.carousel').addEventListener(evt, ()=>{ paused = true; });
-});
-['mouseleave','focusout','touchend'].forEach(evt=>{
-document.querySelector('.carousel').addEventListener(evt, ()=>{ paused = false; });
-});
-})();
-</script>
-</body>
-
-Show less
-
-How to host on GitHub Pages (quick steps)
-Create a repo (or use an existing one):
-Name it anything, or use the special format USERNAME.github.io if you want a root domain.
-Add the file:
-Put index.html in the repository root and commit/push.
-Enable Pages:
-Go to Settings → Pages, set Source to Deploy from a branch, choose main and /(root).
-Save; Pages will build and provide a URL (usually https://USERNAME.github.io/ or https://USERNAME.github.io/REPO/).
-Wait ~1–2 minutes for the site to go live, then visit the link.
-If you want, send me your GitHub username and repo name and I’ll tailor the link and branch instructions to your setup.
-
-Notes & optional tweaks
-Brand colors: I used deep blue #0a3d62 and gold #c9a227. If you have exact hex codes from your site, I can swap them in the :root variables.
-Wix embedding: If you’d like this hosted on GitHub Pages but embedded inside Wix, we can wrap it in an <iframe> on Wix; I’ll size and harden the page for iframe use (e.g., remove outer container shadows if you prefer).
-Performance & accessibility:
-Autoplay pauses during interaction and is fully controllable via keyboard (Left/Right) and Pause/Resume for compliance-friendly behavior.
-ARIA roles and live region update the slide count for assistive tech.
-
-Want me to publish it for you?
-If you share:
-Your GitHub username (and whether you want USERNAME.github.io or a repo like consulting-widget), and
-Whether you want Blue/Gold tuned to your exact brand,
-I’ll push this file and enable Pages so you can open a public link right away.
-Sources
-
-
-You said:
-Yes, please turn Blue/Gold (deep gold) tuned to our exact brand,
-Copilot said:
-Copilot
-Reasoned for 1s
-Piecing together
-Searching
-Searching
-Searching
-Searching
-Adjusting color codes
-Gathering hex codes
-Perfect—thanks for sharing your GitHub Pages link! I’ll tune the Blue/Gold to your exact brand values.
-Quick question to lock it in
-Do you have the HEX codes for your brand Blue and Deep Gold (e.g., #123456)?
-If you’re not sure, I can extract them from your logo/website and apply them.
-
-Ready-to-drop index.html with brand variables
-Below is the same page, but with easy-to-edit CSS variables at the top.
-Just replace --brand-blue and --brand-gold-deep with your exact HEX codes and commit.
-HTML
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>DMC Service Solutions — Consulting Services</title>
-<meta name="description" content="DMC Service Solutions, LLC — Federal contracting consulting services widget" />
-<style>
-:root{
-/* >>> Replace these with your exact brand hex codes <<< */
---brand-blue: #0a3d62; /* placeholder until you provide exact value */
---brand-gold-deep: #b8860b; /* placeholder deep gold; will swap to your exact */
-/* ---------------------------------------------------- */
---text:#222;
---muted:#666;
---bg:#f7f9fc;
-}
-html,body{height:100%;}
-body{
-margin:0; font-family: Arial, Helvetica, sans-serif; color:var(--text); background:var(--bg);
-}
-.container{ max-width:960px; margin:0 auto; padding:24px; }
-
-/* Blue/Gold frame accents */
-header{
-border:2px solid var(--brand-blue);
-box-shadow: 0 0 0 6px var(--brand-gold-deep);
-padding:24px; background:white; border-radius:8px;
-}
-h1{ font-size:1.6rem; margin:0 0 8px; color:var(--brand-blue); }
-.tagline{
-font-family: "Lucida Calligraphy", "Lucida Handwriting", "Brush Script MT", cursive;
-font-size:1.1rem; color:var(--brand-gold-deep); letter-spacing:0.25px;
-}
-
-.widget{ margin-top:16px; background:white; border-radius:8px; overflow:hidden; border:1px solid #ddd; }
-.widget header{ box-shadow:none; border:none; padding:16px 24px; }
-.widget h2{ font-size:1.4rem; margin:0; color:var(--brand-blue); }
-
-/* carousel */
-.carousel{ position:relative; }
-.slides{ display:grid; grid-template-columns: 100%; }
-.slide{ display:none; padding:24px; }
-.slide.active{ display:block; animation: fadeIn 400ms ease-in; }
-@keyframes fadeIn{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
-
-.slide h3{ font-size:1.15rem; margin:0 0 6px; color:var(--brand-blue); }
-.slide p{ font-size:0.95rem; line-height:1.5; color:#333; margin:0; }
-
-.controls{ display:flex; gap:8px; align-items:center; padding:12px 24px; border-top:1px solid #eee; background:#fafafa; }
-.controls button{
-appearance:none; border:1px solid #ccc; background:white; color:#111; padding:8px 12px; border-radius:6px; cursor:pointer; font-size:0.95rem;
-}
-.controls button:hover{ background:#f0f0f0; }
-.status{ margin-left:auto; font-size:0.85rem; color:var(--muted); }
-
-footer{ text-align:center; color:var(--muted); font-size:0.9rem; margin-top:16px; }
-
-@media (max-width:600px){
-.container{ padding:16px; }
-.slide{ padding:16px; }
-.controls{ padding:8px 16px; }
-}
-</style>
-</head>
-<body>
-<div class="container">
-<header>
-<h1>DMC Service Solutions, LLC</h1>
-<div class="tagline" aria-label="Company tagline">Where Experience Breeds Excellence Second To None</div>
-</header>
-
-<section class="widget" aria-labelledby="consulting-services">
-<header>
-<h2 id="consulting-services">Consulting Services</h2>
-</header>
-
-<div class="carousel" role="region" aria-roledescription="carousel" aria-label="Consulting service highlights">
-<div class="slides">
-<article class="slide active" aria-label="Federal Contractor Registration & SAM Support">
-<h3>Federal Contractor Registration &amp; SAM Support</h3>
-<p>End-to-end SAM.gov registration assistance and compliance guidance to ensure timely eligibility.</p>
-</article>
-
-<article class="slide" aria-label="SBA Business Size Analysis">
-<h3>SBA Business Size Analysis</h3>
-<p>Assess receipts and employee-based thresholds to validate small business status across NAICS codes.</p>
-</article>
-
-<article class="slide" aria-label="Primary NAICS Code Analysis">
-<h3>Primary NAICS Code Analysis</h3>
-<p>Identify and align the most advantageous primary NAICS with your core capabilities and opportunities.</p>
-</article>
-
-<article class="slide" aria-label="Solicitation Review & Technical Proposal Design">
-<h3>Solicitation Review &amp; Technical Proposal Design</h3>
-<p>Deconstruct requirements and craft compliant, compelling proposal narratives and technical volumes.</p>
-</article>
-
-<article class="slide" aria-label="Market Research & Competitive Analysis">
-<h3>Market Research &amp; Competitive Analysis</h3>
-<p>Map demand signals, vehicles, and competitor positions to prioritize bids and teaming strategies.</p>
-</article>
-
-<article class="slide" aria-label="Incumbent Contractor Research">
-<h3>Incumbent Contractor Research</h3>
-<p>Surface incumbent performance, pricing, and differentiators to sharpen win themes.</p>
-</article>
-
-<article class="slide" aria-label="Contract Administration & Negotiation Support">
-<h3>Contract Administration &amp; Negotiation Support</h3>
-<p>Strengthen compliance, modifications, invoicing, and negotiation outcomes post-award.</p>
-</article>
-
-<article class="slide" aria-label="Acquisition & Logistics Planning">
-<h3>Acquisition &amp; Logistics Planning</h3>
-<p>Plan procurement timelines, supply chain, and risk mitigations for reliable delivery.</p>
-</article>
-
-<article class="slide" aria-label="FOIA Requests & Federal Information Support">
-<h3>FOIA Requests &amp; Federal Information Support</h3>
-<p>Obtain public records to inform capture decisions and validate competitive intelligence.</p>
-</article>
-
-<article class="slide" aria-label="Business Development, Marketing & Contract Growth Strategy">
-<h3>Business Development, Marketing &amp; Contract Growth Strategy</h3>
-<p>Build pipelines, positioning, and account plans to expand awards and revenue.</p>
-</article>
-</div>
-
-<div class="controls" aria-controls="consulting-services">
-<button type="button" id="prev" aria-label="Previous">◄ Prev</button>
-<button type="button" id="next" aria-label="Next">Next ►</button>
-<button type="button" id="pause" aria-label="Pause autoplay">⏸ Pause</button>
-<span class="status" id="status" aria-live="polite">Slide 1 of 10</span>
-</div>
-</div>
-</section>
-
-<footer>
-<small>© <span id="year"></span> DMC Service Solutions, LLC</small>
-</footer>
-</div>
-
-<script>
-(function(){
-const slides = Array.from(document.querySelectorAll('.slide'));
-const prev = document.getElementById('prev');
-const next = document.getElementById('next');
-const pause = document.getElementById('pause');
-const status = document.getElementById('status');
-const yearEl = document.getElementById('year');
-yearEl.textContent = new Date().getFullYear();
-
-let index = 0;
-let paused = false;
-let timer = null;
-const total = slides.length;
-
-function show(i){
-slides.forEach(s => s.classList.remove('active'));
-slides[i].classList.add('active');
-status.textContent = `Slide ${i+1} of ${total}`;
-}
-
-function start(){
-stop();
-timer = setInterval(()=>{
-if(!paused){ next.click(); }
-}, 4500);
-}
-function stop(){ if(timer){ clearInterval(timer); timer=null; } }
-
-prev.addEventListener('click', ()=>{
-index = (index - 1 + total) % total;
-show(index);
-});
-next.addEventListener('click', ()=>{
-index = (index + 1) % total;
-show(index);
-});
-pause.addEventListener('click', ()=>{
-paused = !paused;
-pause.textContent = paused ? '▶ Resume' : '⏸ Pause';
-pause.setAttribute('aria-label', paused ? 'Resume autoplay' : 'Pause autoplay');
-});
-
-document.addEventListener('keydown', (e)=>{
-if(e.key === 'ArrowLeft'){ prev.click(); }
-if(e.key === 'ArrowRight'){ next.click(); }
-if(e.key.toLowerCase() === ' ') { e.preventDefault(); pause.click(); }
-});
-
-let sx = 0; let dx = 0;
-document.querySelector('.carousel').addEventListener('touchstart', (e)=>{ sx = e.touches[0].clientX; });
-document.querySelector('.carousel').addEventListener('touchmove', (e)=>{ dx = e.touches[0].clientX - sx; });
-document.querySelector('.carousel').addEventListener('touchend', ()=>{
-if(Math.abs(dx) > 40){ (dx > 0 ? prev : next).click(); }
-sx = 0; dx = 0;
-});
-
-show(index);
-start();
-['mouseenter','focusin','touchstart'].forEach(evt=>{
-document.querySelector('.carousel').addEventListener(evt, ()=>{ paused = true; });
-});
-['mouseleave','focusout','touchend'].forEach(evt=>{
-document.querySelector('.carousel').addEventListener(evt, ()=>{ paused = false; });
-});
-})();
-</script>
+      const frame = document.querySelector('.frame');
+      ['mouseenter','focusin','touchstart'].forEach(evt=> frame.addEventListener(evt, ()=>{ paused = true; }));
+      ['mouseleave','focusout','touchend' ].forEach(evt=> frame.addEventListener(evt, ()=>{ paused = false; }));
+    })();
+  </script>
 </body>
 </html>
