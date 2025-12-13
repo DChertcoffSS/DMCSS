@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>DMC Consulting Services – Widget</title>
+
+<style>
+  :root{
+    --deep-gold: #867439;
+    --gold-700: #756633;
+    --gold-500: #9A8443;
+    --bg: #0f1216;
+    --card: #151a20;
+    --text: #e9eef5;
+    --muted: #b9c3d1;
+    --border: #243040;
+    --shadow: 0 10px 25px rgba(0,0,0,.35);
+  }
+
+  html, body { margin:0; padding:0; background:transparent; color:var(--text); font:15px/1.6 Arial, sans-serif; }
+  .dmc-widget { max-width:980px; margin:0 auto; padding:24px; background:var(--bg); border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow); }
+  .dmc-header { text-align:center; margin-bottom:18px; }
+  .dmc-title { font-size:1.35rem; font-weight:700; }
+  .dmc-subtitle { font-size:1.05rem; color:var(--muted); }
+  .dmc-tagline { font-family:"Lucida Calligraphy","Segoe Script",cursive; font-size:1.05rem; color:var(--deep-gold); }
+  .dmc-slider { overflow:hidden; border-radius:14px; border:1px solid var(--border); }
+  .dmc-track { display:grid; grid-auto-flow:column; grid-auto-columns:100%; transition:transform .5s ease-in-out; }
+  .dmc-card { padding:20px; background:var(--card); }
+  .dmc-card h4 { margin:0; font-size:1.2rem; color:var(--gold-500); }
+  .dmc-card p { margin:0; font-size:.98rem; }
+  .dmc-controls { display:flex; justify-content:center; gap:8px; padding:10px; background:rgba(0,0,0,.2); }
+  .dmc-btn { border:1px solid var(--border); background:#0b0e12; color:var(--text); padding:8px 12px; border-radius:999px; cursor:pointer; }
+  .dmc-btn:hover { border-color:var(--gold-700); }
+  .dmc-dot { width:8px; height:8px; border-radius:50%; background:#0b0e12; border:1px solid var(--border); }
+  .dmc-dot[aria-current="true"] { background:var(--deep-gold); }
+  .dmc-footer { text-align:center; margin-top:16px; color:var(--muted); font-size:.92rem; }
+</style>
+</head>
+<body>
+<section class="dmc-widget">
+  <header class="dmc-header">
+    <div class="dmc-title">DMC Consulting Services — Animated Widget</div>
+    <div class="dmc-subtitle">Consulting Services</div>
+    <div class="dmc-tagline">Where Experience Breeds Excellence Second To None</div>
+  </header>
+  <div class="dmc-slider" id="dmcSlider">
+    <div class="dmc-track" id="dmcTrack">
+      <article class="dmc-card"><h4>Federal Contractor Registration &amp; SAM Support</h4><p>End‑to‑end SAM.gov registration assistance and compliance guidance to ensure timely eligibility.</p></article>
+      <article class="dmc-card"><h4>SBA Business Size Analysis</h4><p>Assess receipts and employee‑based thresholds to validate small business status across NAICS codes.</p></article>
+      <article class="dmc-card"><h4>Primary NAICS Code Analysis</h4><p>Identify and align the most advantageous primary NAICS with your core capabilities and opportunities.</p></article>
+      <article class="dmc-card"><h4>Solicitation Review &amp; Technical Proposal Design</h4><p>Deconstruct requirements and craft compliant, compelling proposal narratives and technical volumes.</p></article>
+      <article class="dmc-card"><h4>Market Research &amp; Competitive Analysis</h4><p>Map demand signals, vehicles, and competitor positions to prioritize bids and teaming strategies.</p></article>
+      <article class="dmc-card"><h4>Incumbent Contractor Research</h4><p>Surface incumbent performance, pricing, and differentiators to sharpen win themes.</p></article>
+      <article class="dmc-card"><h4>Contract Administration &amp; Negotiation Support</h4><p>Strengthen compliance, modifications, invoicing, and negotiation outcomes post‑award.</p></article>
+      <article class="dmc-card"><h4>Acquisition &amp; Logistics Planning</h4><p>Plan procurement timelines, supply chain, and risk mitigations for reliable delivery.</p></article>
+      <article class="dmc-card"><h4>FOIA Requests &amp; Federal Information Support</h4><p>Obtain public records to inform capture decisions and validate competitive intelligence.</p></article>
+      <article class="dmc-card"><h4>Business Development, Marketing &amp; Contract Growth Strategy</h4><p>Build pipelines, positioning, and account plans to expand awards and revenue.</p></article>
+    </div>
+    <div class="dmc-controls">
+      <button class="dmc-btn" id="prevBtn">◄ Prev</button>
+      <button class="dmc-btn" id="nextBtn">Next ►</button>
+      <button class="dmc-btn" id="pauseBtn">⏸ Pause</button>
+      <div class="dmc-indicators"></div>
+    </div>
+  </div>
+  <footer class="dmc-footer"><strong>DMC Service Solutions, LLC</strong> • Experience. Integrity. Results.</footer>
+</section>
+
+<script>
+(function(){
+  const track = document.getElementById('dmcTrack');
+  const cards = [...track.children];
+  const count = cards.length;
+
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const pauseBtn = document.getElementById('pauseBtn');
