@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Infographic — U.S. Government Solicitation Structure</title>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Overview of U.S. Government solicitations, FAR compliance, and key sections A–M, with links to detailed compliance guidance and an infographic." />
+  <meta property="og:title" content="U.S. Government Solicitations: Structure, Process &amp; FAR Compliance" />
+  <meta property="og:description" content="Structure of federal solicitations (Sections A–M), FAR compliance overview, and helpful resources." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://radiant-kleicha-1a204c.netlify.app/" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #222222;
+      --muted: #6b7280;
+      --primary: #385088;
+      --accent:  #b0a890;
+      --link: var(--primary);
+      --link-hover: #2e426f;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--link-hover); }
+
+    .topbar { position: sticky; top: 0; z-index: 1000; background: linear-gradient(90deg, var(--primary), var(--accent)); color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+    .topbar-inner { max-width: 1000px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: bold; white-space: nowrap; }
+    .brand img { height: 28px; width: auto; }
+    .brand-col { display: flex; flex-direction: column; line-height: 1.2; }
+    .tagline { font-family: "Lucida Calligraphy", "Lucida Handwriting", cursive; font-size: 16px; color: #fff; opacity: 0.95; }
+    .nav { display: flex; flex-wrap: wrap; gap: 12px; margin-left: auto; }
+    .nav a { color: #fff; padding: 8px 10px; border-radius: 6px; transition: background 160ms ease; }
+    .nav a:hover { background: rgba(0,0,0,0.15); }
+
+    .hero { max-width: 1000px; margin: 24px auto 0; padding: 24px 16px 0; }
+    .hero h1 { font-size: 28px; margin: 0 0 6px; }
+    .hero p { color: var(--muted); margin: 6px 0 0; }
+
+    .content { max-width: 1000px; margin: 0 auto; padding: 8px 16px 40px; }
+    h2 { font-size: 22px; margin-top: 28px; }
+    h3 { font-size: 21px; margin-top: 24px; }
+    ul { padding-left: 18px; }
+
+    .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; box-shadow: 0 8px 30px rgba(0,0,0,0.06); margin-top: 18px; }
+
+    .cta { display: grid; gap: 12px; grid-template-columns: 1fr auto; align-items: center; padding: 18px 16px; border-top: 1px solid #e5e7eb; margin-top: 24px; }
+    .cta .actions { display: flex; gap: 10px; }
+    .btn { display: inline-block; padding: 10px 16px; border-radius: 8px; font-weight: 600; color: #fff; background: var(--primary); box-shadow: 0 6px 16px rgba(56,80,136,0.25); transition: transform 120ms ease, box-shadow 160ms ease, background 160ms ease; }
+    .btn:hover { transform: translateY(-1px); background: var(--link-hover); box-shadow: 0 8px 20px rgba(46,66,111,0.35); }
+    .btn.secondary { background: var(--accent); color: #1f2937; box-shadow: 0 6px 16px rgba(176,168,144,0.35); }
+    .btn.secondary:hover { background: #9a917b; color: #111827; box-shadow: 0 8px 20px rgba(176,168,144,0.45); }
+
+    footer { padding: 16px; text-align: center; color: var(--muted); border-top: 1px solid #e5e7eb; }
+
+    .underline-link { position: relative; }
+    .underline-link::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0%; background: currentColor; transition: width 180ms ease; }
+    .underline-link:hover::after { width: 100%; }
+
+    .fade-in { opacity: 0; transform: translateY(8px); animation: fadeIn 500ms ease-out forwards; }
+    @keyframes fadeIn { to { opacity: 1; transform: none; } }
+    .reveal { opacity: 0; transform: translateY(10px); }
+    .reveal.show { opacity: 1; transform: none; transition: 500ms ease-out; }
+
+    @media (max-width: 640px) { .cta { grid-template-columns: 1fr; } .nav { gap: 6px; } .hero h1 { font-size: 24px; } }
+  </style>
+
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <img src="/logo.jpg" alt="DMC Service Solutions, LLC logo" />
+        <div class="brand-col">
+          <span>DMC Service Solutions, LLC</span>
+          <span class="tagline">Expertise. Integrity. Results.</span>
+        </div>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <a href="/" class="underline-link">Home</a>
+        <a href="/#intro" class="underline-link">Introduction</a>
+        <a href="/#structure" class="underline-link">Structure</a>
+        <a href="/far-compliance.html" class="underline-link">FAR Compliance</a>
+        <a href="/infographic.html" class="underline-link">Infographic</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero fade-in">
+    <h1>Infographic: Solicitation Structure &amp; Process</h1>
+    <p class="tagline">A quick visual guide to Sections A–M and the proposal journey.</p>
+    <p>This summary highlights the solicitation sections and key steps from release to award.</p>
+  </section>
+  <main class="content">
+    <section class="card reveal">
+      <h2>Sections A–M</h2>
+      <p>Use this as a checklist when drafting and reviewing your proposal.</p>
+      <ul>
+        <li><strong>A–C:</strong> Administrative &amp; Scope — Offeror info, CLINs/price, Statement of Work.</li>
+        <li><strong>D–F:</strong> Packaging, Inspection, &amp; Delivery — How deliverables are marked, accepted, and scheduled.</li>
+        <li><strong>G–I:</strong> Admin &amp; Clauses — Reporting, special requirements, and governing clauses.</li>
+        <li><strong>J:</strong> Attachments — Exhibits and drawings.</li>
+        <li><strong>K:</strong> Reps &amp; Certs — Compliance attestations.</li>
+        <li><strong>L:</strong> Instructions — What, where, and how to submit.</li>
+        <li><strong>M:</strong> Evaluation — How your proposal will be scored.</li>
+      </ul>
+    </section>
+    <section class="card reveal">
+      <h2>Process Overview</h2>
+      <ol>
+        <li>RFQ/RFP Release</li>
+        <li>Read Sections L &amp; M First</li>
+        <li>Build a Compliance Matrix</li>
+        <li>Draft Volumes (Tech/Management/Price)</li>
+        <li>Internal Reviews (Pink/Red Team)</li>
+        <li>Finalize, Submit, and Track Q&amp;A</li>
+        <li>Evaluation &amp; Award</li>
+      </ol>
+    </section>
+    <footer>© Copyright 2025 DMC Service Solutions, LLC / All Rights Reserved</footer>
+  </main>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('show'); observer.unobserve(entry.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

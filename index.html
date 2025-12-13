@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>U.S. Government Solicitations: Structure, Process &amp; FAR Compliance</title>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Overview of U.S. Government solicitations, FAR compliance, and key sections A–M, with links to detailed compliance guidance and an infographic." />
+  <meta property="og:title" content="U.S. Government Solicitations: Structure, Process &amp; FAR Compliance" />
+  <meta property="og:description" content="Structure of federal solicitations (Sections A–M), FAR compliance overview, and helpful resources." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://radiant-kleicha-1a204c.netlify.app/" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #222222;
+      --muted: #6b7280;
+      --primary: #385088;
+      --accent:  #b0a890;
+      --link: var(--primary);
+      --link-hover: #2e426f;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--link-hover); }
+
+    .topbar { position: sticky; top: 0; z-index: 1000; background: linear-gradient(90deg, var(--primary), var(--accent)); color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+    .topbar-inner { max-width: 1000px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: bold; white-space: nowrap; }
+    .brand img { height: 28px; width: auto; }
+    .brand-col { display: flex; flex-direction: column; line-height: 1.2; }
+    .tagline { font-family: "Lucida Calligraphy", "Lucida Handwriting", cursive; font-size: 16px; color: #fff; opacity: 0.95; }
+    .nav { display: flex; flex-wrap: wrap; gap: 12px; margin-left: auto; }
+    .nav a { color: #fff; padding: 8px 10px; border-radius: 6px; transition: background 160ms ease; }
+    .nav a:hover { background: rgba(0,0,0,0.15); }
+
+    .hero { max-width: 1000px; margin: 24px auto 0; padding: 24px 16px 0; }
+    .hero h1 { font-size: 28px; margin: 0 0 6px; }
+    .hero p { color: var(--muted); margin: 6px 0 0; }
+
+    .content { max-width: 1000px; margin: 0 auto; padding: 8px 16px 40px; }
+    h2 { font-size: 22px; margin-top: 28px; }
+    h3 { font-size: 21px; margin-top: 24px; }
+    ul { padding-left: 18px; }
+
+    .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; box-shadow: 0 8px 30px rgba(0,0,0,0.06); margin-top: 18px; }
+
+    .cta { display: grid; gap: 12px; grid-template-columns: 1fr auto; align-items: center; padding: 18px 16px; border-top: 1px solid #e5e7eb; margin-top: 24px; }
+    .cta .actions { display: flex; gap: 10px; }
+    .btn { display: inline-block; padding: 10px 16px; border-radius: 8px; font-weight: 600; color: #fff; background: var(--primary); box-shadow: 0 6px 16px rgba(56,80,136,0.25); transition: transform 120ms ease, box-shadow 160ms ease, background 160ms ease; }
+    .btn:hover { transform: translateY(-1px); background: var(--link-hover); box-shadow: 0 8px 20px rgba(46,66,111,0.35); }
+    .btn.secondary { background: var(--accent); color: #1f2937; box-shadow: 0 6px 16px rgba(176,168,144,0.35); }
+    .btn.secondary:hover { background: #9a917b; color: #111827; box-shadow: 0 8px 20px rgba(176,168,144,0.45); }
+
+    footer { padding: 16px; text-align: center; color: var(--muted); border-top: 1px solid #e5e7eb; }
+
+    .underline-link { position: relative; }
+    .underline-link::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0%; background: currentColor; transition: width 180ms ease; }
+    .underline-link:hover::after { width: 100%; }
+
+    .fade-in { opacity: 0; transform: translateY(8px); animation: fadeIn 500ms ease-out forwards; }
+    @keyframes fadeIn { to { opacity: 1; transform: none; } }
+    .reveal { opacity: 0; transform: translateY(10px); }
+    .reveal.show { opacity: 1; transform: none; transition: 500ms ease-out; }
+
+    @media (max-width: 640px) { .cta { grid-template-columns: 1fr; } .nav { gap: 6px; } .hero h1 { font-size: 24px; } }
+  </style>
+
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <img src="/logo.jpg" alt="DMC Service Solutions, LLC logo" />
+        <div class="brand-col">
+          <span>DMC Service Solutions, LLC</span>
+          <span class="tagline">Expertise. Integrity. Results.</span>
+        </div>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <a href="/" class="underline-link">Home</a>
+        <a href="/#intro" class="underline-link">Introduction</a>
+        <a href="/#structure" class="underline-link">Structure</a>
+        <a href="/far-compliance.html" class="underline-link">FAR Compliance</a>
+        <a href="/infographic.html" class="underline-link">Infographic</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero fade-in" id="hero">
+    <h1>U.S. Government Solicitations: Structure, Process &amp; FAR Compliance</h1>
+    <p class="tagline">Your next contract could be closer than you think.</p>
+    <p>Government contracting represents a significant opportunity—but winning requires mastery of the solicitation structure and FAR compliance.</p>
+  </section>
+  <main class="content">
+    <section class="card reveal" id="intro">
+      <h2>Introduction</h2>
+      <p>Government contracting represents a significant opportunity for businesses of all sizes. In fact, the federal government spends over $600 billion annually on goods and services, making it the largest buyer in the world. However, success in this space requires more than competitive pricing—it demands a deep understanding of the solicitation process and strict compliance with the Federal Acquisition Regulation (FAR).</p>
+    </section>
+    <section class="card reveal" id="structure">
+      <h3>Structure of a Federal Solicitation: Sections A–M</h3>
+      <ul>
+        <li><strong>A:</strong> Information to Offerors – Basic details like solicitation number and agency contact.</li>
+        <li><strong>B:</strong> Supplies or Services and Price/Cost – Lists contract line items and pricing structure.</li>
+        <li><strong>C:</strong> Statement of Work – Detailed description of tasks and deliverables.</li>
+        <li><strong>D:</strong> Packaging and Marking – Instructions for labeling and shipping deliverables.</li>
+        <li><strong>E:</strong> Inspection and Acceptance – Defines quality standards and acceptance criteria.</li>
+        <li><strong>F:</strong> Deliveries or Performance – Specifies timelines and delivery schedules.</li>
+        <li><strong>G:</strong> Contract Administration Data – Outlines reporting and invoicing requirements.</li>
+        <li><strong>H:</strong> Special Contract Requirements – Includes unique clauses such as security mandates.</li>
+        <li><strong>I:</strong> Contract Clauses – Incorporates FAR clauses and agency-specific provisions.</li>
+        <li><strong>J:</strong> Attachments and Exhibits – Technical drawings or additional documentation.</li>
+        <li><strong>K:</strong> Representations and Certifications – Includes compliance certifications.</li>
+        <li><strong>L:</strong> Instructions to Offerors – Proposal formatting and submission guidelines.</li>
+        <li><strong>M:</strong> Evaluation Criteria – Explains how proposals will be scored.</li>
+      </ul>
+    </section>
+    <section class="card reveal" id="far">
+      <h3>Understanding FAR Compliance</h3>
+      <p>The Federal Acquisition Regulation (FAR) governs every aspect of federal procurement, ensuring fairness, transparency, and accountability. See <a href="/far-compliance.html" class="underline-link">FAR Compliance Page</a> for information on understanding FAR compliance and best practices for FAR‑compliant proposals.</p>
+    </section>
+    <section class="card reveal" id="infographic">
+      <h3>Infographic Summary</h3>
+      <p>See <a href="/infographic.html" class="underline-link">Infographic Page</a> for a summary of U.S. Government Solicitation Structure and Process, Solicitation Sections, FAR Compliance Tips, and Key Steps in the Process.</p>
+    </section>
+    <div class="cta">
+      <div>
+        <strong>Your next contract could be closer than you think.</strong>
+        <br />Let’s discuss how we can support your goals and help you win government contracts efficiently and compliantly.
+      </div>
+      <div class="actions">
+        <a class="btn" href="https://www.linkedin.com/company/dmc-service-solutions-llc" target="_blank" rel="noopener">Share on LinkedIn</a>
+        <a class="btn secondary" href="https://www.dmcservicesolutions.com/" target="_blank" rel="noopener">Visit Website</a>
+      </div>
+    </div>
+    <footer>© Copyright 2025 DMC Service Solutions, LLC / All Rights Reserved</footer>
+  </main>
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        const el = document.querySelector(href);
+        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('show'); observer.unobserve(entry.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
